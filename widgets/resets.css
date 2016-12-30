@@ -1,0 +1,21 @@
+html, body, h1, p, article, ul, div {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  color: inherit;
+  background: transparent;
+}
+
+body{
+  font-family: Open Sans;
+  line-height: 1.2;
+}
+
+
+.interactive{
+  display: flex;
+  justify-content: flex-start;
+}

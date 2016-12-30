@@ -21494,6 +21494,14 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _tabs = __webpack_require__(179);
+	
+	var _tabs2 = _interopRequireDefault(_tabs);
+	
+	var _clock = __webpack_require__(180);
+	
+	var _clock2 = _interopRequireDefault(_clock);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21510,17 +21518,20 @@
 	
 	    var _this = _possibleConstructorReturn(this, (Root.__proto__ || Object.getPrototypeOf(Root)).call(this, props));
 	
-	    _this.state = { temp: 4 };
+	    _this.state = { temp: 34 };
 	    return _this;
 	  }
 	
 	  _createClass(Root, [{
 	    key: 'render',
 	    value: function render() {
+	
+	      var tabData = { one: "I am the first", two: "Second pane here", three: "Third pane here" };
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        this.state.temp
+	        _react2.default.createElement(_tabs2.default, { tabs: tabData }),
+	        _react2.default.createElement(_clock2.default, null)
 	      );
 	    }
 	  }]);
@@ -21529,6 +21540,166 @@
 	}(_react2.default.Component);
 	
 	exports.default = Root;
+
+/***/ },
+/* 179 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Tabs = function (_React$Component) {
+	  _inherits(Tabs, _React$Component);
+	
+	  function Tabs(props) {
+	    _classCallCheck(this, Tabs);
+	
+	    var _this = _possibleConstructorReturn(this, (Tabs.__proto__ || Object.getPrototypeOf(Tabs)).call(this, props));
+	
+	    _this.state = { index: 0 };
+	    _this.propKeys = Object.keys(_this.props.tabs);
+	    return _this;
+	  }
+	
+	  _createClass(Tabs, [{
+	    key: "updateIndex",
+	    value: function updateIndex(index) {
+	      console.log("update");
+	      // const index = this.propKeys.indexOf(e.key);
+	      console.log(index);
+	      this.setState({ index: index });
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      var _this2 = this;
+	
+	      console.log("render");
+	      var tabs = this.propKeys.map(function (tab, index) {
+	        return _react2.default.createElement(
+	          "h1",
+	          { key: tab, className: "tab", onClick: _this2.updateIndex.bind(_this2, index) },
+	          tab
+	        );
+	      });
+	
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "tabs" },
+	        _react2.default.createElement(
+	          "ul",
+	          { className: "tabs-header" },
+	          tabs
+	        ),
+	        _react2.default.createElement(
+	          "article",
+	          { className: "tabs-content" },
+	          this.props.tabs[this.propKeys[this.state.index]]
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Tabs;
+	}(_react2.default.Component);
+	
+	exports.default = Tabs;
+
+/***/ },
+/* 180 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Clock = function (_React$Component) {
+	  _inherits(Clock, _React$Component);
+	
+	  function Clock(props) {
+	    _classCallCheck(this, Clock);
+	
+	    var _this = _possibleConstructorReturn(this, (Clock.__proto__ || Object.getPrototypeOf(Clock)).call(this, props));
+	
+	    _this.state = { time: new Date() };
+	    console.log(_this.state.time);
+	    return _this;
+	  }
+	
+	  //solutions used SetInterval in componentDidMount and ClearInterval
+	  //in componentWillUnmount instead of setTimeout in my solution
+	
+	  //checks for initial render
+	
+	
+	  _createClass(Clock, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      setTimeout(this.tick.bind(this), 1000);
+	    }
+	
+	    //checks subsequent renders
+	
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate() {
+	      setTimeout(this.tick.bind(this), 1000);
+	    }
+	  }, {
+	    key: 'tick',
+	    value: function tick() {
+	      this.setState({ time: new Date() });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        this.state.time.toTimeString()
+	      );
+	    }
+	  }]);
+	
+	  return Clock;
+	}(_react2.default.Component);
+	
+	exports.default = Clock;
+	
+	//http://localhost:8080/
 
 /***/ }
 /******/ ]);
